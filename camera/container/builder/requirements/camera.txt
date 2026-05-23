@@ -1,0 +1,3 @@
+ros2-testing-apt-source
+ros-humble-depthai-ros-v3
+ros-humble-rviz2

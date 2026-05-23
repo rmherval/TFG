@@ -1,0 +1,13 @@
+/oak:
+  ros__parameters:
+    driver:
+      i_usb_port_id: "1.2.2"
+    pipeline_gen:
+      i_nn_type: none
+      i_enable_rgbd: true
+      i_pipeline_type: rgbd
+    stereo:
+      i_depth_preset: DEFAULT
+    camera:
+      i_publish_tf: false
+      i_tf_binary_path: ""
