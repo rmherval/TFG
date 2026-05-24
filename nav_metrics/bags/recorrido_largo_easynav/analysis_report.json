@@ -1,0 +1,154 @@
+{
+  "goals_detected": 5,
+  "total_segments": 5,
+  "segments": [
+    {
+      "segment": 1,
+      "total_time_seconds": 81.611644905,
+      "distance_traveled_meters": 20.55072993331042,
+      "straight_distance_meters": 15.501017655837297,
+      "overshoot_meters": 5.049712277473125,
+      "mean_velocity_ms": 0.25181124528530807,
+      "mean_cmd_velocity_ms": 0.1618844419919387,
+      "max_velocity_ms": 0.382999986410141,
+      "efficiency": 0.7542806365584072,
+      "arrived": true,
+      "real_precision_meters": 0.29997596468276655,
+      "poses_count": 6129,
+      "start_pose": {
+        "x": 1.6089954619398594,
+        "y": -2.2205196789886235,
+        "z": 0.0
+      },
+      "end_pose": {
+        "x": -7.080021911107269,
+        "y": -15.057284281389991,
+        "z": 0.0
+      },
+      "target_pose": {
+        "x": -7.066399097442627,
+        "y": -15.356950759887695,
+        "z": 0.0
+      }
+    },
+    {
+      "segment": 2,
+      "total_time_seconds": 32.680820762,
+      "distance_traveled_meters": 6.714607355833033,
+      "straight_distance_meters": 5.525304076867796,
+      "overshoot_meters": 1.1893032789652374,
+      "mean_velocity_ms": 0.20546018120941809,
+      "mean_cmd_velocity_ms": 0.1618844419919387,
+      "max_velocity_ms": 0.382999986410141,
+      "efficiency": 0.8228782092623659,
+      "arrived": true,
+      "real_precision_meters": 0.29757630039535404,
+      "poses_count": 2451,
+      "start_pose": {
+        "x": -7.0453112491764935,
+        "y": -15.426299181092006,
+        "z": 0.0
+      },
+      "end_pose": {
+        "x": -9.57917643764847,
+        "y": -20.336341171594913,
+        "z": 0.0
+      },
+      "target_pose": {
+        "x": -9.553777694702148,
+        "y": -20.632831573486328,
+        "z": 0.0
+      }
+    },
+    {
+      "segment": 3,
+      "total_time_seconds": 87.620725817,
+      "distance_traveled_meters": 20.367206733395804,
+      "straight_distance_meters": 16.682885738033075,
+      "overshoot_meters": 3.6843209953627287,
+      "mean_velocity_ms": 0.23244736383414208,
+      "mean_cmd_velocity_ms": 0.1618844419919387,
+      "max_velocity_ms": 0.382999986410141,
+      "efficiency": 0.8191052389466051,
+      "arrived": true,
+      "real_precision_meters": 0.2991368643086571,
+      "poses_count": 6556,
+      "start_pose": {
+        "x": -9.537640115111417,
+        "y": -20.626093083004047,
+        "z": 0.0
+      },
+      "end_pose": {
+        "x": 5.147322060605655,
+        "y": -28.542567200060603,
+        "z": 0.0
+      },
+      "target_pose": {
+        "x": 5.417287826538086,
+        "y": -28.67141342163086,
+        "z": 0.0
+      }
+    },
+    {
+      "segment": 4,
+      "total_time_seconds": 57.136721138,
+      "distance_traveled_meters": 14.658771060172606,
+      "straight_distance_meters": 10.789538797505747,
+      "overshoot_meters": 3.869232262666859,
+      "mean_velocity_ms": 0.2565560425626783,
+      "mean_cmd_velocity_ms": 0.1618844419919387,
+      "max_velocity_ms": 0.382999986410141,
+      "efficiency": 0.7360466135405147,
+      "arrived": true,
+      "real_precision_meters": 0.2983750744942898,
+      "poses_count": 4283,
+      "start_pose": {
+        "x": 5.395442723121349,
+        "y": -28.591357249371324,
+        "z": 0.0
+      },
+      "end_pose": {
+        "x": 10.73761163718429,
+        "y": -19.217170417624192,
+        "z": 0.0
+      },
+      "target_pose": {
+        "x": 10.895421028137207,
+        "y": -18.963943481445312,
+        "z": 0.0
+      }
+    },
+    {
+      "segment": 5,
+      "total_time_seconds": 96.926510661,
+      "distance_traveled_meters": 22.487037410480177,
+      "straight_distance_meters": 14.918048666583793,
+      "overshoot_meters": 7.568988743896384,
+      "mean_velocity_ms": 0.23200089693859385,
+      "mean_cmd_velocity_ms": 0.1618844419919387,
+      "max_velocity_ms": 0.382999986410141,
+      "efficiency": 0.6634065837250386,
+      "arrived": true,
+      "real_precision_meters": 0.2918989167280532,
+      "poses_count": 7257,
+      "start_pose": {
+        "x": 10.829485653479114,
+        "y": -18.96320622643446,
+        "z": 0.0
+      },
+      "end_pose": {
+        "x": 0.7205330158076073,
+        "y": -7.992460919579648,
+        "z": 0.0
+      },
+      "target_pose": {
+        "x": 0.8487821817398071,
+        "y": -7.730245113372803,
+        "z": 0.0
+      }
+    }
+  ],
+  "total_distance_all_segments": 84.77835249319205,
+  "total_time_all_segments": 355.97642328300003,
+  "goals_reached": 5
+}
