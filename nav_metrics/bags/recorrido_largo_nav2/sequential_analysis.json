@@ -1,0 +1,19 @@
+{
+  "summary": {
+    "total_distance_m": 69.16,
+    "total_time_s": 340.04,
+    "goals_reached": 0,
+    "total_goals": 1
+  },
+  "segments": [
+    {
+      "segment_index": 1,
+      "time_s": 340.04,
+      "distance_m": 69.156,
+      "efficiency": 0.207,
+      "avg_speed_mps": 0.203,
+      "precision_m": 11.405,
+      "arrived": false
+    }
+  ]
+}
