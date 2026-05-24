@@ -1,0 +1,253 @@
+<?xml version="1.0" ?>
+<robot name="fwmini">
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/chassis.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.0 0.0 0.0"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="0.35 0.33 0.49" />
+      </geometry>
+    </collision>
+  </link>
+<!-- falang003 -->
+  <link name="falang003">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/falang003.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="-0.125 -0.175 0.026"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <!-- falang007 -->
+  <link name="falang007">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/falang007.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.125 -0.175 0.026"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <!-- falang011 -->
+  <link name="falang011">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/falang011.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="-0.125 0.175 0.026"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <!-- falang015 -->
+  <link name="falang015">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/falang015.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.125 0.175 0.026"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+
+ <!-- lunzi -->
+  <link name="lunzi">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/lunzi.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz=" -0.099 -0.175 0.1085"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <!-- lunzi002 -->
+  <link name="lunzi002">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/lunzi002.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="-0.125 -0.175 0.03"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+    <!-- lunzi004 -->
+  <link name="lunzi004">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/lunzi004.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.099 -0.175 0.1085 "/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <!-- lunzi006 -->
+  <link name="lunzi006">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/lunzi006.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.125 -0.175 0.03"/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <!-- lunzi008 -->
+  <link name="lunzi008">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/lunzi008.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="-0.099 0.175 0.1085 "/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <!-- lunzi010 -->
+  <link name="lunzi010">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/lunzi010.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="-0.125 0.175 0.03"/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <!-- lunzi012 -->
+  <link name="lunzi012">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/lunzi012.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.099 0.175 0.1085 "/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <!-- lunzi014 -->
+  <link name="lunzi014">
+    <visual>
+      <geometry>
+        <mesh filename="package://yhs_chassis_description/meshes/lunzi014.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.125 0.175 0.03"/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="robot_to_falang003" type="fixed">
+    <parent link="base_link"/>
+    <child link="falang003"/>
+    <origin rpy="0 0 0" xyz="0.125 0.17507 -0.019"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="robot_to_falang007" type="fixed">
+    <parent link="base_link"/>
+    <child link="falang007"/>
+    <origin rpy="0 0 0" xyz="-0.125 0.17493 -0.019 "/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="robot_to_falang011" type="fixed">
+    <parent link="base_link"/>
+    <child link="falang011"/>
+    <origin rpy="0 0 0" xyz="0.125 -0.17493 -0.019"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="robot_to_falang015" type="fixed">
+    <parent link="base_link"/>
+    <child link="falang015"/>
+    <origin rpy="0 0 0" xyz="-0.125 -0.17507 -0.019  "/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="falang003_to_lunzi002" type="continuous">
+    <parent link="falang003"/>
+    <child link="lunzi002"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="falang007_to_lunzi006" type="continuous">
+    <parent link="falang007"/>
+    <child link="lunzi006"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.00"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="falang011_to_lunzi010" type="continuous">
+    <parent link="falang011"/>
+    <child link="lunzi010"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.00"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+    <joint name="falang015_to_lunzi014" type="continuous">
+    <parent link="falang015"/>
+    <child link="lunzi014"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.00"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="lunzi002_to_lunzi" type="continuous">
+    <parent link="lunzi002"/>
+    <child link="lunzi"/>
+    <origin rpy="0 0 0" xyz=" -0.027 0.0 -0.077"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+
+  <joint name="lunzi006_to_lunzi004" type="continuous">
+    <parent link="lunzi006"/>
+    <child link="lunzi004"/>
+    <origin rpy="0 0 0" xyz="0.027 0.0 -0.077"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+
+  <joint name="lunzi010_to_lunzi008" type="continuous">
+    <parent link="lunzi010"/>
+    <child link="lunzi008"/>
+    <origin rpy="0 0 0" xyz="-0.027 0.0 -0.077"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+
+  <joint name="lunzi014_to_lunzi012" type="continuous">
+    <parent link="lunzi014"/>
+    <child link="lunzi012"/>
+    <origin rpy="0 0 0" xyz="0.027 0.0 -0.077"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+
+
+</robot>

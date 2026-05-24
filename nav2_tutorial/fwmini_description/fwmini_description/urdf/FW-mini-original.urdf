@@ -1,0 +1,51 @@
+<robot name="fwmini">
+  <link name="base_link">
+    <visual>
+      <origin
+        xyz="-0.34 0.275 0"
+        rpy="1.57 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yhs_chassis_description/meshes/FW-mini.STL"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.8 0.8 0.8 1" />
+      </material>
+    </visual>
+  </link>
+</robot>
+
+
+  <!-- Left Wheel -->
+  <link name="left_wheel_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://my_robot_description/meshes/left_wheel.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_wheel_link"/>
+    <origin xyz="-0.2 0.15 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+
+    <!-- Optional: Caster -->
+  <link name="caster_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://my_robot_description/meshes/caster.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="caster_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster_link"/>
+    <origin xyz="0.2 0 0" rpy="0 0 0"/>
+  </joint>
