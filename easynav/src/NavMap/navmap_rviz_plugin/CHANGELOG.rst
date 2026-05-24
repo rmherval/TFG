@@ -1,0 +1,42 @@
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package navmap_rviz_plugin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+0.3.0 (2025-11-24)
+------------------
+* Cleanup unused headers
+* NavMap Goal Pose
+* Occupancy works
+* FREE_SPACE as white
+* Merge branch 'jazzy' into rolling
+* Contributors: Francisco Martín Rico, Francisco Miguel Moreno
+
+0.2.5 (2025-10-17)
+------------------
+
+0.2.4 (2025-10-16)
+------------------
+
+0.2.3 (2025-10-16)
+------------------
+
+0.2.2 (2025-10-12)
+------------------
+
+0.2.1 (2025-09-25)
+------------------
+
+0.2.0 (2025-09-25)
+------------------
+* Fix tranformations sensible to frame_id
+* Surface reconstruction and Slam server
+* Change License to Apache 2
+* Draw only areas
+* Add layer statistics
+* NavMap assignment Optimization
+* Add color scheme and rainboy color scheme
+* Added to RViz2 plugin a topic to update only one layer
+* Fix locate_navcel
+* Mesh form points
+* Added RViz Plugin
+* Contributors: Francisco Martín Rico
