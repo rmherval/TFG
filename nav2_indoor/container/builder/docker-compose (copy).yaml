@@ -1,0 +1,127 @@
+---
+name: nav2_indoor
+services:
+  robot_description:
+    image: nav2_indoor/ros2
+    build:
+      context: ../..
+      dockerfile: container/builder/Dockerfile
+    privileged: true
+    network_mode: "host"
+    ipc: host
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    command: >
+      bash -c "source /opt/ros/humble/setup.bash &&
+               source /home/ubuntu/ros_ws/install/setup.bash &&
+               ros2 launch nav2_indoor robot_description.launch.py"
+
+  scan:
+    image: nav2_indoor/ros2
+    privileged: true
+    network_mode: "host"
+    ipc: host
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    command: >
+      bash -c "source /opt/ros/humble/setup.bash &&
+               source /home/ubuntu/ros_ws/install/setup.bash &&
+               ros2 launch nav2_indoor pointcloud_to_laserscan.launch.py"
+
+  tf:
+    image: nav2_indoor/ros2
+    privileged: true
+    network_mode: "host"
+    ipc: host
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    command: >
+      bash -c "source /opt/ros/humble/setup.bash &&
+               source /home/ubuntu/ros_ws/install/setup.bash &&
+               cd /home/ubuntu/ros_ws/src/nav2_indoor && 
+               python3 broadcaster.py"
+
+  slam:
+    image: nav2_indoor/ros2
+    privileged: true
+    network_mode: "host"
+    ipc: host
+    profiles:
+      - map
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - type: bind
+        source: ../mapas
+        target: /home/ubuntu/mapas
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    command: >
+      bash -c "source /opt/ros/humble/setup.bash &&
+               source /home/ubuntu/ros_ws/install/setup.bash &&
+               ros2 launch nav2_indoor slam.launch.py"
+
+  localization:
+    image: nav2_indoor/ros2
+    privileged: true
+    network_mode: "host"
+    ipc: host
+    profiles:
+      - navigation
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - type: bind
+        source: ../mapas
+        target: /home/ubuntu/mapas
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    depends_on:
+      - rviz
+    command: >
+      bash -c "source /opt/ros/humble/setup.bash &&
+               source /home/ubuntu/ros_ws/install/setup.bash &&
+               ros2 launch nav2_indoor amcl_nav2.launch.py map_yaml_file:=/home/ubuntu/mapas/map_server.yaml"
+
+  rviz:
+    image: nav2_indoor/ros2
+    privileged: true
+    network_mode: "host"
+    ipc: host
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - type: bind
+        source: ../rviz
+        target: /home/ubuntu/rviz
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    command: >
+      bash -c "source /opt/ros/humble/setup.bash &&
+               source /home/ubuntu/ros_ws/install/setup.bash &&
+               rviz2 -d /home/ubuntu/rviz/rviz_config.rviz"
+  
+  foxglove:
+   image: nav2_indoor/ros2
+   privileged: true
+   network_mode: "host"
+   ipc: host
+   environment:
+     - DISPLAY=$DISPLAY
+     - QT_X11_NO_MITSHM=1
+   depends_on:
+     - robot_description
+   volumes:
+     - /tmp/.X11-unix:/tmp/.X11-unix:rw
+   command: ["bash", "-c", "source /opt/ros/humble/setup.bash \
+               && source /home/ubuntu/ros_ws/install/setup.bash \
+               && ros2 launch foxglove_bridge foxglove_bridge_launch.xml"]
