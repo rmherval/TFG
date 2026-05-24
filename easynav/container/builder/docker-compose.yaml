@@ -1,0 +1,60 @@
+---
+name: easynav
+services:
+  robot_description:
+    image: easynav:jazzy
+    build:
+      context: ../..
+      dockerfile: container/builder/Dockerfile
+    privileged: true
+    network_mode: "host"
+    ipc: host
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - ROS_DOMAIN_ID=10
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - type: bind
+        source: ../tfs
+        target: /home/ubuntu/tfs
+    command: >
+      bash -c "source /opt/ros/jazzy/setup.bash &&
+               source /home/ubuntu/ros_ws/install/setup.bash &&
+               ros2 launch easynavigation robot_description_exterior.launch.py"
+  map_exterior:
+    image: easynav:jazzy
+    privileged: true
+    network_mode: "host"
+    ipc: host
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - ROS_DOMAIN_ID=10
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    command: ["bash", "-c", "source /opt/ros/jazzy/setup.bash 
+                && source /home/ubuntu/ros_ws/install/setup.bash
+                && ros2 run easynav_system system_main --ros-args --params-file /home/ubuntu/ros_ws/src/fwmini/robots_params/exterior_params.yaml"]
+  foxglove:
+    image: easynav:jazzy
+    privileged: true
+    network_mode: "host"
+    ipc: host
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - ROS_DOMAIN_ID=10
+    depends_on:
+      - robot_description
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    command:
+      [
+        "bash",
+        "-c",
+        "source /opt/ros/jazzy/setup.bash \
+        && source /home/ubuntu/ros_ws/install/setup.bash \
+        && ros2 launch foxglove_bridge foxglove_bridge_launch.xml \
+          topic_whitelist:=\"['^/goal_latlong$', '^/fixposition/odometry_llh$']\""
+      ]
