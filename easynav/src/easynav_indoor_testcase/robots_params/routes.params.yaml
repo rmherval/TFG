@@ -1,0 +1,70 @@
+controller_node:
+  ros__parameters:
+    use_sim_time: false
+    controller_types: [dummy]
+    dummy:
+      rt_freq: 30.0 
+      plugin: easynav_controller/DummyController
+      cycle_time_nort: 0.001
+      cycle_time_rt: 0.001
+
+localizer_node:
+  ros__parameters:
+    use_sim_time: false
+    localizer_types: [dummy]
+    dummy:
+      rt_freq: 50.0
+      freq: 5.0
+      reseed_freq: 0.1
+      plugin: easynav_localizer/DummyLocalizer
+      cycle_time_nort: 0.001
+      cycle_time_rt: 0.001
+
+maps_manager_node:
+  ros__parameters:
+    use_sim_time: false
+    map_types: [costmap, routes]
+    routes:
+      freq: 10.0 
+      plugin: easynav_routes_maps_manager/RoutesMapsManager
+      filters: [routes_costmap]
+      routes_costmap:
+        plugin: easynav_routes_maps_manager/RoutesCostmapFilter
+        min_cost: 50
+        route_width: 0.5
+      cycle_time_nort: 0.001
+      cycle_time_rt: 0.001
+    costmap:
+      freq: 10.0 
+      plugin: easynav_costmap_maps_manager/CostmapMapsManager
+      package: easynav_indoor_testcase
+      map_path_file: maps/home2.yaml
+      filters: [obstacles, inflation]
+      obstacles:
+        plugin: easynav_costmap_maps_manager/CostmapMapsManager/ObstaclesFilter
+      inflation:
+        plugin: easynav_costmap_maps_manager/CostmapMapsManager/InflationFilter
+        inflation_radius: 1.3
+        inscribed_radius: 0.25
+        cost_scaling_factor: 3.0
+
+planner_node:
+  ros__parameters:
+    use_sim_time: false
+    planner_types: [dummy]
+    dummy:
+      freq: 1.0
+      plugin: easynav_planner/DummyPlanner
+      cycle_time_nort: 0.001
+      cycle_time_rt: 0.001
+
+sensors_node:
+  ros__parameters:
+    use_sim_time: false
+    forget_time: 0.5
+
+system_node:
+  ros__parameters:
+    use_sim_time: false
+    position_tolerance: 0.1
+    angle_tolerance: 0.05

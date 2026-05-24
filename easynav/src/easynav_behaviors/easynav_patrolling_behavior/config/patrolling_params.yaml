@@ -1,0 +1,10 @@
+patrolling_node:
+  ros__parameters:
+    use_sim_time: false
+    frame_id: map
+    waypoints: [wp1, wp2, wp3, wp4, wp5]
+    wp1: [1.62, -2.16, 0.0]
+    wp2: [2.49, -0.13, 0.0]
+    wp3: [1.62, -2.16, 0.0]
+    wp4: [-0.097, -4.77, 0.0]
+    wp5: [0.92, -7.36, 0.0]
