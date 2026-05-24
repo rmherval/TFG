@@ -1,0 +1,549 @@
+<?xml version="1.0"?>
+<robot name="diff_drive" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:arg name="namespace" default="" />
+
+  <material name="orange">
+    <color rgba="0.8 0.4 0.0 1.0"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0 0 0 1.0"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1.0"/>
+  </material>
+
+  <link name="vrtk_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.03" radius="0.02"/>
+      </geometry>
+      <material name="Red">
+        <color rgba="1.0 0 0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="base_footprint"/>
+  
+  <link name="inertial_link">
+    <inertial>
+      <mass value="40"/>
+      <origin xyz="0.0 0.0 0.0"/>
+      <inertia ixx="2.288641" ixy="0" ixz="0" iyy="5.103976" iyz="0" izz="3.431465"/>
+    </inertial>
+  </link>
+
+ <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/chassis.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz="0.0 0.0 0.0"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="21.720294186827278"/>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="0.4263365194675346" ixy="5.304626609180785e-11" ixz="-4.57376315465362e-11" iyy="0.2615601430428813" iyz="-0.00013153368310562288" izz="0.6339417954588755"/>
+    </inertial>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.055"/>
+      <geometry>
+        <box size="0.49 0.36 0.15 " />
+      </geometry>
+    </collision>
+  </link>
+  
+<!-- falang003 -->
+  <link name="falang003">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/falang003.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz="-0.175 0.125  0.026"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.9194261569579638"/>
+      <origin rpy="1.5707963267948968 0 0" xyz="-0.0337596 0.0 0.0614954"/>
+      <inertia ixx="0.0012726776231141224" ixy="0.0003517699989336183" ixz="1.4095694929766352e-09" iyy="0.0016872287550903603" iyz="-9.235547795818879e-10" izz="0.0022824069674926705"/>
+    </inertial>
+  </link>
+  <!-- falang007 -->
+  <link name="falang007">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/falang007.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz="-0.175 -0.125  0.026"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.9194261569579638"/>
+      <origin rpy="1.5707963267948968 0 0" xyz="0.0337596 0.0 0.0614954"/>
+      <inertia ixx="0.0012726776231141213" ixy="-0.0003517699989336183" ixz="1.4095694929364843e-09" iyy="0.0016872287550903616" iyz="9.235547795796151e-10" izz="0.0022824069674926696"/>
+    </inertial>
+  </link>
+  <!-- falang011 -->
+  <link name="falang011">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/falang011.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz=" 0.175 0.125  0.026"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.9194261569579638"/>
+      <origin rpy="1.5707963267948968 0 0" xyz="-0.0337596 0.0 0.0614954"/>
+      <inertia ixx="0.0012726776231141213" ixy="0.0003517699989336188" ixz="1.4095694929143954e-09" iyy="0.0016872287550903607" iyz="-9.235547796071238e-10" izz="0.002282406967492669"/>
+    </inertial>
+  </link>
+  <!-- falang015 -->
+  <link name="falang015">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/falang015.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz="0.175 -0.125  0.026"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.9194261569579639"/>
+      <origin rpy="1.5707963267948968 0 0" xyz="0.0337596 0.0 0.0614954"/>
+      <inertia ixx="0.0012726776231141207" ixy="-0.00035176999893361826" ixz="1.4095694929271005e-09" iyy="0.0016872287550903607" iyz="9.235547796205859e-10" izz="0.002282406967492669"/>
+    </inertial>
+  </link>
+
+
+ <!-- lunzi -->
+  <link name="lunzi">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/lunzi.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz=" -0.099 -0.175 0.1085"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.9336572162769865"/>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.0303029 0.0 0.0"/>
+      <inertia ixx="0.0020215448277376693" ixy="-2.0217895507812487e-18" ixz="-1.010894775390625e-18" iyy="0.001326546162440318" iyz="5.054473876953125e-19" izz="0.0013265461624403128"/>
+    </inertial>
+    <collision>
+      <origin rpy="0 1.5707963267948963 0" xyz="0.03 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- lunzi002 -->
+  <link name="lunzi002">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/lunzi002.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="-0.125 -0.175 0.03"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.11613399384629902"/>
+      <origin rpy="1.5707963267948968 0 0" xyz="-0.0265905 0.0 -0.0270617"/>
+      <inertia ixx="0.0001317469699128777" ixy="-3.644906574104803e-05" ixz="-9.165804605841636e-10" iyy="5.7656046094065086e-05" iyz="-7.992722004893423e-10" izz="0.0001524526223984975"/>
+    </inertial>
+  </link>
+    <!-- lunzi004 -->
+  <link name="lunzi004">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/lunzi004.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.099 -0.175 0.1085 "/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.9336572162769865"/>
+      <origin rpy="1.5707963267948963 0 0" xyz="-0.0303029 0.0 0.0"/>
+      <inertia ixx="0.00202154482773767" ixy="2.5272369384765608e-18" ixz="-1.4152526855468747e-17" iyy="0.00132654616244032" iyz="-2.021789550781251e-18" izz="0.0013265461624403158"/>
+    </inertial>
+    <collision>
+      <origin rpy="0 1.5707963267948963 0" xyz="-0.03 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- lunzi006 -->
+  <link name="lunzi006">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/lunzi006.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.125 -0.175 0.03"/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.11613399384629912"/>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.0265905 0.0 -0.0270617"/>
+      <inertia ixx="0.00013174696991287795" ixy="3.644906574104785e-05" ixz="-9.165804589414596e-10" iyy="5.7656046094067357e-05" iyz="7.992721997469663e-10" izz="0.00015245262239849952"/>
+    </inertial>
+  </link>
+  <!-- lunzi008 -->
+  <link name="lunzi008">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/lunzi008.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="-0.099 0.175 0.1085 "/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.9336572162769863"/>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.0303029 0.0 0.0"/>
+      <inertia ixx="0.0020215448277376646" ixy="2.5272369384765623e-18" ixz="-4.0435791015625e-18" iyy="0.0013265461624403037" iyz="-1.010894775390625e-18" izz="0.001326546162440306"/>
+    </inertial>
+    <collision>
+      <origin rpy="0 1.5707963267948963 0" xyz="0.03 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- lunzi010 -->
+  <link name="lunzi010">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/lunzi010.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="-0.125 0.175 0.03"/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.11613399384629908"/>
+      <origin rpy="1.5707963267948963 0 0" xyz="-0.0265905 0.0 -0.0270617"/>
+      <inertia ixx="0.00013174696991287795" ixy="-3.644906574104789e-05" ixz="-9.165804599523544e-10" iyy="5.7656046094068115e-05" iyz="-7.992722004893422e-10" izz="0.0001524526223984998"/>
+    </inertial>
+  </link>
+  <!-- lunzi012 -->
+  <link name="lunzi012">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/lunzi012.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.099 0.175 0.1085 "/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.9336572162769864"/>
+      <origin rpy="1.5707963267948963 0 0" xyz="-0.0303029 0.0 0.0"/>
+      <inertia ixx="0.0020215448277376633" ixy="0.0" ixz="-2.1228790283203124e-17" iyy="0.0013265461624403058" iyz="1.010894775390631e-18" izz="0.0013265461624403097"/>
+    </inertial>
+    <collision>
+      <origin rpy="0 1.5707963267948963 0" xyz="-0.03 0.0 0.0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- lunzi014 -->
+  <link name="lunzi014">
+    <visual>
+      <geometry>
+        <mesh filename="package://fwmini_description/meshes/lunzi014.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.125 0.175 0.03"/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.11613399384629909"/>
+      <origin rpy="1.5707963267948963 0 0" xyz="0.0265905 0.0 -0.0270617"/>
+      <inertia ixx="0.00013174696991287833" ixy="3.644906574104792e-05" ixz="-9.165804589414596e-10" iyy="5.765604609406838e-05" iyz="7.992721996995808e-10" izz="0.00015245262239849927"/>
+    </inertial>
+  </link>
+
+  <joint name="robot_to_falang003" type="fixed">
+    <parent link="base_link"/>
+    <child link="falang003"/>
+    <origin rpy="0 0 0" xyz="0.125 0.17507 -0.019"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="robot_to_falang007" type="fixed">
+    <parent link="base_link"/>
+    <child link="falang007"/>
+    <origin rpy="0 0 0" xyz="-0.125 0.17493 -0.019 "/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="robot_to_falang011" type="fixed">
+    <parent link="base_link"/>
+    <child link="falang011"/>
+    <origin rpy="0 0 0" xyz="0.125 -0.17493 -0.019"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="robot_to_falang015" type="fixed">
+    <parent link="base_link"/>
+    <child link="falang015"/>
+    <origin rpy="0 0 0" xyz="-0.125 -0.17507 -0.019  "/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="falang003_to_lunzi002" type="continuous">
+    <parent link="falang003"/>
+    <child link="lunzi002"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="falang007_to_lunzi006" type="continuous">
+    <parent link="falang007"/>
+    <child link="lunzi006"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.00"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="falang011_to_lunzi010" type="continuous">
+    <parent link="falang011"/>
+    <child link="lunzi010"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.00"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+    <joint name="falang015_to_lunzi014" type="continuous">
+    <parent link="falang015"/>
+    <child link="lunzi014"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.00"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="lunzi002_to_lunzi" type="continuous">
+    <parent link="lunzi002"/>
+    <child link="lunzi"/>
+    <origin rpy="0 0 0" xyz=" -0.027 0.0 -0.077"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+
+  <joint name="lunzi006_to_lunzi004" type="continuous">
+    <parent link="lunzi006"/>
+    <child link="lunzi004"/>
+    <origin rpy="0 0 0" xyz="0.027 0.0 -0.077"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+
+  <joint name="lunzi010_to_lunzi008" type="continuous">
+    <parent link="lunzi010"/>
+    <child link="lunzi008"/>
+    <origin rpy="0 0 0" xyz="-0.027 0.0 -0.077"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+
+  <joint name="lunzi014_to_lunzi012" type="continuous">
+    <parent link="lunzi014"/>
+    <child link="lunzi012"/>
+    <origin rpy="0 0 0" xyz="0.027 0.0 -0.077"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+  
+  <joint name="vrtk_base_joint" type="fixed">
+    <parent link="vrtk_link"/>
+    <child link="base_link"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="base_footprint_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 -0.23479"/>
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+  </joint>
+  
+  <joint name="inertial_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="inertial_link"/>
+  </joint>
+
+  
+  <ros2_control name="GazeboSimSystem" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+    <joint name="falang003_to_lunzi002">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="lunzi002_to_lunzi">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="falang007_to_lunzi006">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="lunzi006_to_lunzi004">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="falang011_to_lunzi010">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="lunzi010_to_lunzi008">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="falang015_to_lunzi014">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="lunzi014_to_lunzi012">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+  </ros2_control>
+
+  <gazebo>
+    <!-- Joint state publisher -->
+    <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <ros>
+        <namespace>$(arg namespace)</namespace>
+      </ros>
+      <parameters>$(find fwmini_description)/config/diff_drive_controller.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+</robot>
