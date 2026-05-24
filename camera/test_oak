@@ -1,0 +1,41 @@
+import cv2
+import depthai as dai
+
+# Create pipeline
+pipeline = dai.Pipeline()
+
+# Define source: DepthAI v3 camera node for RGB sensor on OAK-D S2
+cam_rgb = pipeline.create(dai.node.Camera).build(dai.CameraBoardSocket.CAM_A)
+
+# Request BGR output at 640x480 for OpenCV display
+video_out = cam_rgb.requestOutput((640, 480), type=dai.ImgFrame.Type.BGR888i, fps=30)
+
+# Create host queue and run pipeline
+q = video_out.createOutputQueue(maxSize=4, blocking=False)
+pipeline.start()
+
+show_window = True
+
+try:
+    while True:
+        in_frame = q.get()
+        if in_frame is not None:
+            frame = in_frame.getCvFrame()
+            if show_window:
+                try:
+                    cv2.imshow("OAK-D S2", frame)
+                except cv2.error:
+                    show_window = False
+                    print("OpenCV sin backend GUI; captura activa sin ventana. Usa Ctrl+C para salir.")
+
+        if show_window and cv2.waitKey(1) == ord('q'):
+            break
+except KeyboardInterrupt:
+    pass
+finally:
+    pipeline.stop()
+    if show_window:
+        try:
+            cv2.destroyAllWindows()
+        except cv2.error:
+            pass
