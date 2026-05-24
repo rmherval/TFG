@@ -1,0 +1,88 @@
+controller_node:
+  ros__parameters:
+    use_sim_time: false
+    colision_checker:
+      active: true
+      debug_markers: true
+      downsample_leaf_size: 0.05 
+      robot_radius: 0.30
+      brake_acc: 1.0     
+      safety_margin: 0.10  # margen extra alrededor del robot
+    controller_types: [mpc]
+    mpc:
+      rt_freq: 10.0 #cambiado de 30.0 a 10 para mejorar la frecuencia de actualización del controlador
+      plugin: easynav_mpc_controller/MPCController
+      max_linear_speed: 0.5
+      max_angular_speed: 0.5
+      max_linear_velocity: 0.5   # límite activo para el optimizador
+      max_angular_velocity: 0.5
+      horizon_steps: 15          # aumentado de 6 a 15 para mejor previsión (1.5s a 10Hz)
+      safety_radius: 0.20        # aumentado de 0.10 a 0.20 para mejor detección de obstáculos inflados
+      fallback_goal_pos_tol: 0.20  # Tolerancia de meta más grande para menos oscilación final
+      fallback_goal_yaw_tol: 0.10   # Tolerancia angular más grande
+
+localizer_node:
+  ros__parameters:
+    use_sim_time: false
+    localizer_types: [costmap]
+    costmap:
+      rt_freq: 30.0 #cambiado de 50.0 a 15 para mejorar la frecuencia de actualización del mapa de partículas
+      freq: 2.0 #cambiado de 5.0 a 2.0 para mejorar la frecuencia de actualización del mapa de partículas
+      reseed_freq: 1.0  #cambiado de 2.0 a 1.0 para mejorar la frecuencia de actualización del mapa de partículas
+      plugin: easynav_costmap_localizer/AMCLLocalizer
+      num_particles: 100
+      noise_translation: 0.05
+      noise_rotation: 0.1
+      noise_translation_to_rotation: 0.1
+      min_noise_xy: 0.01
+      min_noise_yaw: 0.01
+      initial_pose:
+        x: 9.5
+        y: 10.5
+        yaw: 0.0
+        std_dev_xy: 0.1
+        std_dev_yaw: 0.01
+
+maps_manager_node:
+  ros__parameters:
+    use_sim_time: false
+    map_types: [costmap]
+    costmap:
+      freq: 2.0 
+      plugin: easynav_costmap_maps_manager/CostmapMapsManager
+      package: fwmini
+      map_path_file: maps/mapa_ai2_tfg.yaml
+      filters: [obstacles, inflation]
+      obstacles:
+        plugin: easynav_costmap_maps_manager/CostmapMapsManager/ObstaclesFilter
+      inflation:
+        plugin: easynav_costmap_maps_manager/CostmapMapsManager/InflationFilter
+        inflation_radius: 0.6
+        inscribed_radius: 0.3
+        cost_scaling_factor: 2.0
+
+planner_node:
+  ros__parameters:
+    use_sim_time: false
+    planner_types: [simple]
+    simple:
+      freq: 0.5
+      plugin: easynav_costmap_planner/CostmapPlanner
+      cost_factor: 10.0
+      continuous_replan: false
+
+sensors_node:
+  ros__parameters:
+    use_sim_time: false
+    forget_time: 0.5
+    sensors: [laser1]
+    laser1:
+      topic: scan
+      type: sensor_msgs/msg/LaserScan
+
+system_node:
+  ros__parameters:
+    use_sim_time: false
+    use_real_time: true
+    position_tolerance: 0.4
+    angle_tolerance: 0.3

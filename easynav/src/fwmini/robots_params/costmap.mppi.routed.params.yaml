@@ -1,0 +1,94 @@
+controller_node:
+  ros__parameters:
+    use_sim_time: false
+    controller_types: [mppi]
+    mppi:
+      rt_freq: 10.0 
+      plugin: easynav_mppi_controller/MPPIController
+      num_samples: 200
+      horizon_steps: 5
+      dt: 0.15
+      lambda: 1.0      
+      fov: 1.57
+      max_linear_velocity: 1.5
+      max_angular_velocity: 1.0
+      max_linear_acceleration: 0.5
+      max_angular_acceleration: 0.5
+      safety_radius: 0.3
+
+localizer_node:
+  ros__parameters:
+    use_sim_time: false
+    localizer_types: [costmap]
+    costmap:
+      rt_freq: 15.0
+      freq: 2.0
+      reseed_freq: 1.0
+      plugin: easynav_costmap_localizer/AMCLLocalizer
+      num_particles: 100
+      noise_translation: 0.05
+      noise_rotation: 0.1
+      noise_translation_to_rotation: 0.1
+      initial_pose:
+        x: 9.5
+        y: 10.5
+        yaw: 0.0
+        std_dev_xy: 0.1
+        std_dev_yaw: 0.01
+
+maps_manager_node:
+  ros__parameters:
+    use_sim_time: false
+    map_types: [costmap, routes]
+    routes:
+      freq: 2.0 
+      plugin: easynav_routes_maps_manager/RoutesMapsManager
+      package: fwmini
+      map_path_file: routes/routes.yaml
+      filters: [routes_costmap]
+      routes_costmap:
+        plugin: easynav_routes_maps_manager/RoutesCostmapFilter
+        min_cost: 50
+        route_width: 0.1
+      cycle_time_nort: 0.001
+      cycle_time_rt: 0.001
+    costmap:
+      freq: 2.0 
+      plugin: easynav_costmap_maps_manager/CostmapMapsManager
+      package: fwmini
+      map_path_file: maps/mapa_ai2_tfg.yaml
+      filters: [obstacles, inflation]
+      obstacles:
+        plugin: easynav_costmap_maps_manager/CostmapMapsManager/ObstaclesFilter
+      inflation:
+        plugin: easynav_costmap_maps_manager/CostmapMapsManager/InflationFilter
+        inflation_radius: 0.1
+        inscribed_radius: 0.4
+        cost_scaling_factor: 1.0
+
+planner_node:
+  ros__parameters:
+    use_sim_time: false
+    planner_types: [simple]
+    simple:
+      freq: 0.5
+      plugin: easynav_costmap_planner/CostmapPlanner
+      cost_factor: 10.0
+      heuristic_scale: 1.0
+      continuous_replan: false
+
+sensors_node:
+  ros__parameters:
+    use_sim_time: false
+    forget_time: 0.5
+    sensors: [laser1]
+    laser1:
+      topic: scan
+      type: sensor_msgs/msg/LaserScan
+
+system_node:
+  ros__parameters:
+    use_sim_time: false
+    use_real_time: true
+    position_tolerance: 0.4
+    angle_tolerance: 0.3
