@@ -1,0 +1,469 @@
+<?xml version="1.0"?>
+<robot name="diff_drive" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:arg name="namespace" default="" />
+
+  <material name="orange">
+    <color rgba="0.8 0.4 0.0 1.0"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0 0 0 1.0"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1.0"/>
+  </material>
+
+  <link name="base_footprint"/>
+
+  <link name="rslidar"/>
+
+  <link name="inertial_link">
+    <inertial>
+      <mass value="40"/>
+      <origin xyz="0.0 0.0 0.0"/>
+      <inertia ixx="2.288641" ixy="0" ixz="0" iyy="5.103976" iyz="0" izz="3.431465"/>
+    </inertial>
+  </link>
+
+ <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/chassis.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz="0.0 0.0 0.0"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.055"/>
+      <geometry>
+        <box size="0.49 0.36 0.15 " />
+      </geometry>
+    </collision>
+  </link>
+  
+<!-- falang003 -->
+  <link name="falang003">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/falang003.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz="-0.175 0.125  0.026"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  
+  <!-- falang007 -->
+  <link name="falang007">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/falang007.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz="-0.175 -0.125  0.026"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  
+  <!-- falang011 -->
+  <link name="falang011">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/falang011.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz=" 0.175 0.125  0.026"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  
+  <!-- falang015 -->
+  <link name="falang015">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/falang015.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz="0.175 -0.125  0.026"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+
+ <!-- lunzi -->
+  <link name="lunzi">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/lunzi.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 -1.5707963267948963 0" xyz=" -0.175 0.1085 -0.099"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.025"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <!-- lunzi002 -->
+  <link name="lunzi002">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/lunzi002.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz="-0.175 0.125  0.03"/>
+      <material name="gray">
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+    <!-- lunzi004 -->
+  <link name="lunzi004">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/lunzi004.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 1.5707963267948963 0" xyz="0.175 0.1085 -0.099"/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.025"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- lunzi006 -->
+  <link name="lunzi006">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/lunzi006.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz="-0.175 -0.125  0.03"/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  <!-- lunzi008 -->
+  <link name="lunzi008">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/lunzi008.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 -1.5707963267948963 0" xyz="0.175 0.1085 -0.099"/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.025"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- lunzi010 -->
+  <link name="lunzi010">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/lunzi010.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz="0.175 0.125  0.03"/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+  
+  <!-- lunzi012 -->
+  <link name="lunzi012">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/lunzi012.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="0 1.5707963267948963 0" xyz="-0.175 0.1085 -0.099"/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz=" 0.0 0.0 0.025"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.07"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- lunzi014 -->
+  <link name="lunzi014">
+    <visual>
+      <geometry>
+        <mesh filename="package://easynavigation/meshes/lunzi014.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <origin rpy="1.5707963267948963 0 -1.5707963267948963" xyz="0.175 -0.125  0.03"/>
+      <material name="gray">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="robot_to_falang003" type="fixed">
+    <parent link="base_link"/>
+    <child link="falang003"/>
+    <origin rpy="0 0 0" xyz="0.17507 -0.125  -0.019"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="robot_to_falang007" type="fixed">
+    <parent link="base_link"/>
+    <child link="falang007"/>
+    <origin rpy="0 0 0" xyz=" 0.17493 0.125  -0.019 "/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="robot_to_falang011" type="fixed">
+    <parent link="base_link"/>
+    <child link="falang011"/>
+    <origin rpy="0 0 0" xyz="-0.17493 -0.125  -0.019"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="robot_to_falang015" type="fixed">
+    <parent link="base_link"/>
+    <child link="falang015"/>
+    <origin rpy="0 0 0" xyz="-0.17507 0.125  -0.019  "/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="falang003_to_lunzi002" type="fixed">
+    <parent link="falang003"/>
+    <child link="lunzi002"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="falang007_to_lunzi006" type="fixed">
+    <parent link="falang007"/>
+    <child link="lunzi006"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.00"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="falang011_to_lunzi010" type="fixed">
+    <parent link="falang011"/>
+    <child link="lunzi010"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.00"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+    <joint name="falang015_to_lunzi014" type="fixed">
+    <parent link="falang015"/>
+    <child link="lunzi014"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.00"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="lunzi002_to_lunzi" type="fixed">
+    <parent link="lunzi002"/>
+    <child link="lunzi"/>
+    <origin rpy="1.5707963267948963 0 0" xyz=" 0.0 0.027 -0.077"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="lunzi006_to_lunzi004" type="fixed">
+    <parent link="lunzi006"/>
+    <child link="lunzi004"/>
+    <origin rpy="-1.5707963267948963 0 0" xyz=" 0.0 -0.027  -0.077"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="lunzi010_to_lunzi008" type="fixed">
+    <parent link="lunzi010"/>
+    <child link="lunzi008"/>
+    <origin rpy="1.5707963267948963 0 0" xyz=" 0.0 0.027  -0.077"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="lunzi014_to_lunzi012" type="fixed">
+    <parent link="lunzi014"/>
+    <child link="lunzi012"/>
+    <origin rpy="-1.5707963267948963 0 0" xyz="0.0 -0.027  -0.077"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <joint name="base_rslidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="rslidar"/>
+    <origin xyz="0.0 0.0 0.02" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="base_footprint_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 -0.23479"/>
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+  </joint>
+  
+  <joint name="inertial_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="inertial_link"/>
+  </joint>
+
+  
+  <ros2_control name="GazeboSimSystem" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+    <joint name="falang003_to_lunzi002">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="lunzi002_to_lunzi">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="falang007_to_lunzi006">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="lunzi006_to_lunzi004">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="falang011_to_lunzi010">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="lunzi010_to_lunzi008">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="falang015_to_lunzi014">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+    <joint name="lunzi014_to_lunzi012">
+        <command_interface name="position">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="velocity">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <command_interface name="effort">
+            <param name="min">-1000</param>
+            <param name="max">1000</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+    </joint>
+  </ros2_control>
+
+</robot>
