@@ -1,0 +1,2 @@
+ws://localhost:8765 f
+oxglove_bridge
